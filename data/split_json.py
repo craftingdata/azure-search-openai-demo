@@ -19,6 +19,9 @@ def split_json_file2(input_filepath):
         content = entry.get('content', '')
         if content is None:
             content = ''
+        link = entry.get('link', '')
+        if link:
+            content = f"[Source]({link})\n\n{content}"
         output_filepath = os.path.join(output_dir, f"{base_filename}_entry{i + 1}.md")
         with open(output_filepath, 'w', encoding='utf-8') as output_file:
             output_file.write(content)

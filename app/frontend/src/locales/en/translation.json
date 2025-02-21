@@ -38,8 +38,8 @@
     "chatEmptyStateSubtitle": "Ask anything or try an example",
     "defaultExamples": {
         "1": "How can vectorbt pro perform a backtest from signals?",
-        "2": "How can I create a good strategy for following dividend stocks in the US?",
-        "3": "What is the expected trend for the S&P 500 index over the next five years? Compare it to the past S&P 500 performance",
+        "2": "How can I create and measure a stock strategy for long momentum?",
+        "3": "Why are uncorrelated strategies useful in an automated stock trading system?",
         "placeholder": "Type a new question (e.g. what is vectorbt pro?)"
     },
     "askTitle": "Ask your data",

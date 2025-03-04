@@ -13,20 +13,32 @@ def split_json_file2(input_filepath):
 
     # Get the base filename without extension
     base_filename = os.path.splitext(os.path.basename(input_filepath))[0]
+    files_created = 0
 
     # Create a new file for each entry in the JSON array
     for i, entry in enumerate(data):
+
+        # Check if 'replies' exists and is empty
+        if 'replies' in entry and not entry['replies']:
+            continue
+        
         content = entry.get('content', '')
         if content is None:
-            content = ''
+            continue
+        
+        if len(content) < 25:
+            continue
+        
         link = entry.get('link', '')
         if link:
             content = f"[Source]({link})\n\n{content}"
         output_filepath = os.path.join(output_dir, f"{base_filename}_entry{i + 1}.md")
         with open(output_filepath, 'w', encoding='utf-8') as output_file:
             output_file.write(content)
+            
+        files_created += 1
 
-    print(f"Created {len(data)} files from JSON entries successfully.")
+    print(f"Created {files_created} files from JSON entries successfully.")
 
 def split_json_file(input_filepath, num_parts):
     # Read the JSON file with UTF-8 encoding
